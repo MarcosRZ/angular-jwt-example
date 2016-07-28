@@ -1,8 +1,10 @@
 var express = require('express')
 var jwt = require('jsonwebtoken')
 var bodyParser = require('body-parser')
-
+var morgan = require('morgan')
 var app = express();
+
+app.use(morgan('dev'))
 
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
@@ -27,7 +29,7 @@ app.post('/auth', (req, res) => {
 });
 
 app.get('*', function(req, res){
-  res.sendfile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 app.listen(3000, function () {
