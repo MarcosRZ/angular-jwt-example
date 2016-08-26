@@ -1,5 +1,5 @@
 angular
-	.module('login')
+	.module('modlogin')
 	.component('login', {
 		templateUrl: 'public/core/login/login.template.html',
 		controller: function LoginController($scope, $http) {
@@ -18,6 +18,8 @@ angular
 				  data: {user: $scope.user, pass: $scope.pass}
 				}).then(function successCallback(response) {
 					$scope.token = response.data
+					//$state.go('private')
+					//console.log('Oj0!!')
 				  }, function errorCallback(response) {
 					$scope.token = ""
 				  });
